@@ -3,7 +3,7 @@ const Protocol = require("../protocol");
 const Reader = require("../reader");
 const Writer = require("../writer");
 const DualHandle = require("../../game/dual");
-
+ 
 class WebAssemblyPool {
 
     /** @param {number} size */
@@ -395,7 +395,11 @@ module.exports = class OgarXProtocol extends Protocol {
         // 4 bytes score + 8 bytes mouse + 8 bytes viewport + 4 * 2 bytes 0 padding = 33 bytes
         // We don't have to calculate this because serialize returns the write end
         // But this is a good way to verify it wrote as expect
-        const buffer_length = 33 + 10 * A_count + 8 * U_count + 4 * E_count + 2 * D_count;
+        const buffer_length = 33
+        + 10 * A_count
+        + 8 * U_count
+        + 4 * E_count
+        + 2 * D_count;
         
         const mem_check = AUED_end_ptr + buffer_length - this.memory.buffer.byteLength;
         if (mem_check > 0) {

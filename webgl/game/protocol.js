@@ -246,7 +246,7 @@ module.exports = class Protocol extends EventEmitter {
     disconnect() {
         this.connected && this.ws.close();
         
-        delete this.replay.curr;
+        delete this.replay.curr; 
         this.replay.resetTrack();
     }
 
