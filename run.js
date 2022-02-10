@@ -14,33 +14,33 @@ const DefaultProcesses = [
             OGARX_TOKEN: process.env.OGARX_TOKEN
         }
     },
-    // {
-    //     name: "Instant",
-    //     env: {
-    //         OGARX_MODE: "default/instant",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "Instant",
-    //         OGARX_ENDPOINT: "instant",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // },
-    // {
-    //     name: "Ex-Geminia",
-    //     env: {
-    //         OGARX_MODE: "default/instant",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "extreme-omega",
-    //         OGARX_ENDPOINT: "ex-geminia",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // },
     {
-        name: "Libris",
+        name: "Instant",
         env: {
-            OGARX_MODE: "default/solotrick-ffa",
+            OGARX_MODE: "default/instant",
+            OGARX_PORT: process.env.PORT,
+            OGARX_SERVER: "Instant",
+            OGARX_ENDPOINT: "instant",
+            OGARX_TOKEN: process.env.OGARX_TOKEN
+        }
+    },
+    {
+        name: "Ex-Geminia",
+        env: {
+            OGARX_MODE: "default/extreme-omega",
+            OGARX_PORT: process.env.PORT,
+            OGARX_SERVER: "extreme-omega",
+            OGARX_ENDPOINT: "ex-geminia",
+            OGARX_TOKEN: process.env.OGARX_TOKEN
+        }
+    },
+    {
+        name: "Geminia",
+        env: {
+            OGARX_MODE: "default/selffeed",
             OGARX_PORT: process.env.PORT,
             OGARX_SERVER: "Megasplit",
-            OGARX_ENDPOINT: "mega",
+            OGARX_ENDPOINT: "selffeed",
             OGARX_TOKEN: process.env.OGARX_TOKEN
         }
     },
