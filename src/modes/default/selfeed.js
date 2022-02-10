@@ -3,7 +3,7 @@ module.exports = {
     TIME_SCALE: 1.2, // magic that make everything work like a certain ball game
     PLAYER_MAX_CELLS: 128,
     PLAYER_MERGE_NEW_VER: true,
-    PLAYER_AUTOSPLIT_SIZE: 0,
+    PLAYER_AUTOSPLIT_SIZE: 4000,
     PLAYER_MERGE_TIME: 0,
     PLAYER_NO_MERGE_DELAY: 900,
     PLAYER_SPEED: 2,
@@ -23,8 +23,8 @@ module.exports = {
     PLAYER_SPLIT_DIST: 80,
     PLAYER_MIN_SPLIT_SIZE: 150,
     PLAYER_MIN_EJECT_SIZE: 100,
-    MAP_HW: 26000,
-    MAP_HH: 26000,
+    MAP_HW: 20142,
+    MAP_HH: 20142,
     NORMALIZE_THRESH_MASS: 100000,
     PLAYER_SAFE_SPAWN_RADIUS: 1.2
 };
