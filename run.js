@@ -66,7 +66,18 @@ pm2.connect(err => {
                     `:${proc.env.OGARX_PORT || 443}/${proc.env.OGARX_ENDPOINT}`);
                 res();
                 // throw console.log('roc.env.OGARX_PORT', proc.env.OGARX_PORT)
+                pm2.launchBus((err, bus) => {
+                    console.log('[PM2] Log streaming started');
+              
+                    bus.on('log:out', function(packet) {
+                     console.log('[App:%s] %s', packet.process.name, packet.data);
+                    });
+              
+                    bus.on('log:err', function(packet) {
+                      console.error('[App:%s][Err] %s', packet.process.name, packet.data);
+                    });
+                  });
             });
-        }))).then(() => process.exit(0));
+        })))//.then(() => process.exit(0));
     });
 });
