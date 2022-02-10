@@ -4,26 +4,26 @@ const path = require("path");
 
 /** @type {pm2.StartOptions[]} */
 const DefaultProcesses = [
-    // {
-    //     name: "Server1",
-    //     env: {
-    //         OGARX_MODE: "default/mega",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "Megasplit",
-    //         OGARX_ENDPOINT: "mega",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // },
-    // {
-    //     name: "Instant",
-    //     env: {
-    //         OGARX_MODE: "default/instant",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "Instant",
-    //         OGARX_ENDPOINT: "instant",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // },
+    {
+        name: "Server1",
+        env: {
+            OGARX_MODE: "default/mega",
+            OGARX_PORT: process.env.PORT,
+            OGARX_SERVER: "Megasplit",
+            OGARX_ENDPOINT: "mega",
+            OGARX_TOKEN: process.env.OGARX_TOKEN
+        }
+    },
+    {
+        name: "Instant",
+        env: {
+            OGARX_MODE: "default/instant",
+            OGARX_PORT: process.env.PORT,
+            OGARX_SERVER: "Instant",
+            OGARX_ENDPOINT: "instant",
+            OGARX_TOKEN: process.env.OGARX_TOKEN
+        }
+    },
     {
         name: "Ex-Geminia",
         env: {
@@ -37,7 +37,7 @@ const DefaultProcesses = [
     {
         name: "Geminia",
         env: {
-            OGARX_MODE: "default/selffeed",
+            OGARX_MODE: "default/selfeed",
             OGARX_PORT: process.env.PORT,
             OGARX_SERVER: "Megasplit",
             OGARX_ENDPOINT: "selffeed",
