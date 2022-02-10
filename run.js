@@ -39,8 +39,8 @@ const DefaultProcesses = [
         env: {
             OGARX_MODE: "custom/selfeed",
             OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "Megasplit",
-            OGARX_ENDPOINT: "selffeed",
+            OGARX_SERVER: "Selfeed",
+            OGARX_ENDPOINT: "selfeed",
             OGARX_TOKEN: process.env.OGARX_TOKEN
         }
     },
