@@ -65,7 +65,7 @@ pm2.connect(err => {
                     `(${proc.env.OGARX_MODE}-${proc.env.OGARX_SERVER}) mounted on ` +
                     `:${proc.env.PORT || proc.env.OGARX_PORT || 443}/${proc.env.OGARX_ENDPOINT}`);
                 res();
-                throw console.log('roc.env.OGARX_PORT', proc.env.OGARX_PORT)
+                // throw console.log('roc.env.OGARX_PORT', proc.env.OGARX_PORT)
             });
         }))).then(() => process.exit(0));
     });
