@@ -5,45 +5,55 @@ const path = require("path");
 /** @type {pm2.StartOptions[]} */
 const DefaultProcesses = [
     {
-        name: "Instant",
+        name: "Server1",
         env: {
-            OGARX_MODE: "default/instant",
-            OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "Instant",
-            OGARX_ENDPOINT: "instant",
-            OGARX_TOKEN: process.env.OGARX_TOKEN
-        }
-    },
-    {
-        name: "Ex-Geminia",
-        env: {
-            OGARX_MODE: "default/instant",
-            OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "extreme-omega",
-            OGARX_ENDPOINT: "ex-geminia",
-            OGARX_TOKEN: process.env.OGARX_TOKEN
-        }
-    },
-    {
-        name: "Libris",
-        env: {
-            OGARX_MODE: "default/solotrick-ffa",
+            OGARX_MODE: "default/mega",
             OGARX_PORT: process.env.PORT,
             OGARX_SERVER: "Megasplit",
             OGARX_ENDPOINT: "mega",
             OGARX_TOKEN: process.env.OGARX_TOKEN
         }
     },
-    {
-        name: "Geminia",
-        env: {
-            OGARX_MODE: "default/mega",
-            OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "Megasplit",
-            OGARX_ENDPOINT: "geminia",
-            OGARX_TOKEN: process.env.OGARX_TOKEN
-        }
-    }
+    // {
+    //     name: "Instant",
+    //     env: {
+    //         OGARX_MODE: "default/instant",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "Instant",
+    //         OGARX_ENDPOINT: "instant",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
+    // },
+    // {
+    //     name: "Ex-Geminia",
+    //     env: {
+    //         OGARX_MODE: "default/instant",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "extreme-omega",
+    //         OGARX_ENDPOINT: "ex-geminia",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
+    // },
+    // {
+    //     name: "Libris",
+    //     env: {
+    //         OGARX_MODE: "default/solotrick-ffa",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "Megasplit",
+    //         OGARX_ENDPOINT: "mega",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
+    // },
+    // {
+    //     name: "Geminia",
+    //     env: {
+    //         OGARX_MODE: "default/mega",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "Megasplit",
+    //         OGARX_ENDPOINT: "geminia",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
+    // }
 ];
 
 /** @type {pm2.StartOptions[]} */
