@@ -1,5 +1,6 @@
 const pm2 = require("pm2");
 const { existsSync, unlinkSync } = require("fs");
+const fs = require("fs");
 const { execSync } = require("child_process");
 
 const net = require("net");
