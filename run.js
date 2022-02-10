@@ -77,7 +77,7 @@ for (const proc of config) {
     proc.cwd = __dirname;
     proc.script = "./src/index.js";
     proc.max_memory_restart = "300M";
-    proc.kill_timeout = 3000;
+    proc.kill_timeout = 7000;
 
     if (validateMode(proc.env.OGARX_MODE)) {
         procToStart.push(proc);
