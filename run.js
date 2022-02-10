@@ -34,16 +34,16 @@ const DefaultProcesses = [
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
     // },
-    // {
-    //     name: "Libris",
-    //     env: {
-    //         OGARX_MODE: "default/solotrick-ffa",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "Megasplit",
-    //         OGARX_ENDPOINT: "mega",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // },
+    {
+        name: "Libris",
+        env: {
+            OGARX_MODE: "default/solotrick-ffa",
+            OGARX_PORT: process.env.PORT,
+            OGARX_SERVER: "Megasplit",
+            OGARX_ENDPOINT: "mega",
+            OGARX_TOKEN: process.env.OGARX_TOKEN
+        }
+    },
     // {
     //     name: "Geminia",
     //     env: {
