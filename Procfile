@@ -1,1 +1,1 @@
-web: node run
+web: pm2 start run.js --deep-monitoring --attach
