@@ -53,7 +53,7 @@ pm2.connect(err => {
         cwd: __dirname,
         script: "./src/gateway.js",
         wait_ready: true,
-        env: { GATEWAY_PORT, GATEWAY_ORIGIN }
+        env: { GATEWAY_PORT:3001, GATEWAY_ORIGIN }
     }, e => {
         if (e) console.error(e);
         else console.log("Gateway Process started");
