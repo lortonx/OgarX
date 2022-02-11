@@ -37,7 +37,7 @@ const DefaultProcesses = [
     {
         name: "Geminia",
         env: {
-            OGARX_MODE: "custom/selfeed",
+            OGARX_MODE: "default/selfeed",
             OGARX_PORT: process.env.PORT,
             OGARX_SERVER: "Selfeed",
             OGARX_ENDPOINT: "selfeed",
