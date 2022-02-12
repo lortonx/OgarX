@@ -9,7 +9,7 @@ const SOCKET_FILE = path.resolve(__dirname, "..", "unix.sock");
 const Protocols = require("./protocols");
 const Game = require("../game");
 
-const CONN_THROTTLE = 5;
+const CONN_THROTTLE = 1;
 
 module.exports = class SocketServer {
 
