@@ -12,6 +12,7 @@ module.exports = {
     VIRUS_SIZE: 125,
     VIRUS_PUSH: true,
     VIRUS_MONOTONE_POP: false,
+    VIRUS_FEED_TIMES: 7,
 
     EJECT_SIZE: 75,//75,// 68,//85,
     EJECT_LOSS: 70,// 64,//80,
@@ -31,4 +32,6 @@ module.exports = {
     PLAYER_SAFE_SPAWN_RADIUS: 1.2,
 
     SOCKET_RECONNECT:2,
+    PLAYER_SPAWN_DELAY: 200,
+    EJECT_MAX_AGE: 40000,
 };
