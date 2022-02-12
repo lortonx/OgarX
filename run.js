@@ -24,26 +24,26 @@ const DefaultProcesses = [
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
     // },
-    // {
-    //     name: "Ex-Geminia",
-    //     env: {
-    //         OGARX_MODE: "default/extreme-omega",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "extreme-omega",
-    //         OGARX_ENDPOINT: "ex-geminia",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // },
     {
-        name: "Geminia",
+        name: "Ex-Geminia",
         env: {
-            OGARX_MODE: "custom/sf",
+            OGARX_MODE: "default/extreme-omega",
             OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "Selfeed",
+            OGARX_SERVER: "extreme-omega",
             OGARX_ENDPOINT: "selfeed",
             OGARX_TOKEN: process.env.OGARX_TOKEN
         }
     },
+    // {
+    //     name: "Geminia",
+    //     env: {
+    //         OGARX_MODE: "custom/sf",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "Selfeed",
+    //         OGARX_ENDPOINT: "selfeed",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
+    // },
     // {
     //     name: "Geminia",
     //     env: {
