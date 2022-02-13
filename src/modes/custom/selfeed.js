@@ -4,7 +4,7 @@ module.exports = {
     TIME_SCALE: 1,//1.2, // magic that make everything work like a certain ball game
     PLAYER_MAX_CELLS: 64,
     PLAYER_MERGE_NEW_VER: false,
-    PLAYER_AUTOSPLIT_SIZE: 1100,
+    PLAYER_AUTOSPLIT_SIZE: 2100,
     PLAYER_MERGE_TIME: 0,
     PLAYER_NO_MERGE_DELAY: 900,//900
     PLAYER_SPEED: 0.8,
