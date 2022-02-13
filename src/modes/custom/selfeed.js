@@ -29,9 +29,9 @@ module.exports = {
 
     BOTS: 15, 
     BOT_SPAWN_SIZE: 600,
-    PELLET_COUNT: 2000,
+    PELLET_COUNT: 2500,
     // PLAYER_VIEW_SCALE: 1.2,
-    PLAYER_SPAWN_SIZE: 500,
+    PLAYER_SPAWN_SIZE: 550,
     PLAYER_SPAWN_DELAY: 10,
     PLAYER_SPLIT_DIST: 80,
     PLAYER_NO_COLLI_DELAY: 650,// пружинит при сплите
@@ -42,6 +42,7 @@ module.exports = {
     PLAYER_VIEW_SCALE: 0.49,
     PLAYER_VIEW_MIN: 2000,
     PLAYER_SPLIT_BOOST:800,
+    EAT_OVERLAP: 3,
 
     DECAY_MIN: 200,
     STATIC_DECAY: 15,
