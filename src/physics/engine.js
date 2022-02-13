@@ -331,7 +331,7 @@ module.exports = class Engine {
             let s;
             if (c.handle instanceof Bot) {
                 const [x, y, success] = this.getSafeSpawnPoint(this.options.BOT_SPAWN_SIZE * this.options.PLAYER_SAFE_SPAWN_RADIUS);
-                success && this.newCell(x, y, this.options.BOT_SPAWN_SIZE, id);
+                success && this.newCell(x, y, this.options.BOT_SPAWN_SIZE, id, 0, 0, 0, c);
                 s = success;
             } else if (c.handle) {
                 /** @type {Controller} */
@@ -341,7 +341,7 @@ module.exports = class Engine {
                     if (this.game.controls[pid].alive) target = this.game.controls[pid];
 
                 const [x, y, success, attempts] = this.getPlayerSpawnPoint(target);
-                success && this.newCell(x, y, this.options.PLAYER_SPAWN_SIZE, id);
+                success && this.newCell(x, y, this.options.PLAYER_SPAWN_SIZE, id, 0, 0, 0, id);
 
                 // console.log(`Trying to spawn ${c.name}(P#${c.id}) target: ${target ? target.id : "null"}: ${success} ${attempts}`);
                 s = success;
@@ -508,7 +508,29 @@ module.exports = class Engine {
                     const r = cell.r;
                     const splitTimes = Math.ceil(r * r * AUTO_DIV);
                     const splitSizes = Math.min(Math.sqrt(r * r / splitTimes), AUTO_SIZE);
+
                     for (let i = 1; i < splitTimes; i++) {
+                        // if(this.removedCells['_'+this.removedCells[i]])  console.log('found autosplit by', this.removedCells['_'+this.removedCells[i]])
+                        if(this.game.controls[cell.pid]) {
+                            const controller = this.game.controls[cell.pid]
+                            // const cell = this.cells[cell_id];
+                            // if (this.counters[id].size >= this.options.PLAYER_MAX_CELLS) break;
+                            // const r = cell.r;
+                            // if (r < MIN_SPLIT_SIZE) continue;
+                            let dx = controller.mouseX - cell.x;
+                            let dy = controller.mouseY - cell.y;
+                            let d = Math.sqrt(dx * dx + dy * dy);
+                            if (d < 1) dx = 1, dy = 0, d = 1;
+                            else dx /= d, dy /= d;
+                            // const MULTI_2 = SPLIT_R_THRESH ? Math.max(r / SPLIT_R_THRESH, 1) : 1;
+                            // this.splitFromCell(cell, cell.r * Math.SQRT1_2, dx, dy, MULTI_2 * boost);
+                            this.splitFromCell(cell, splitSizes, dx, dy, AUTO_BOOST);
+
+                            continue
+                        }
+                        
+                        
+
                         const angle = Math.random() * 2 * Math.PI;
                         this.splitFromCell(cell, splitSizes, Math.sin(angle), Math.cos(angle), AUTO_BOOST);
                     }
@@ -577,13 +599,16 @@ module.exports = class Engine {
 
     /**
      * 
-     * @param {number} id 
-     * @param {number} type 
+     * @param {number} id
+     * @param {number} type  вирус, айди игрока
      * @param {number} eatenBy 
      * @param {number} eatenByType 
      */
     removeCell(id, type, eatenBy, eatenByType) {
         this.tree.remove(this.cells[id]);
+
+        this.cells[id].pid = undefined
+
         this.counters[type].delete(id);
         this.removedCells.push(id);
         this.cellCount--;
@@ -633,7 +658,7 @@ module.exports = class Engine {
         cell.updated = true;
         const x = cell.x + this.options.PLAYER_SPLIT_DIST * boostX;
         const y = cell.y + this.options.PLAYER_SPLIT_DIST * boostY;
-        this.newCell(x, y, size, cell.type, boostX, boostY, boost);
+        this.newCell(x, y, size, cell.type, boostX, boostY, boost, cell.pid);
     }
 
     /**
@@ -680,7 +705,7 @@ module.exports = class Engine {
      * @param {number} type
      * @return {Cell}
      */
-    newCell(x, y, size, type, boostX = 0, boostY = 0, boost = 0) {
+    newCell(x, y, size, type, boostX = 0, boostY = 0, boost = 0, pid) {
         
         if (this.cellCount >= CELL_LIMIT - 1) {
             this.shouldRestart = true;
@@ -692,6 +717,8 @@ module.exports = class Engine {
         
         const cell = this.cells[id];
         
+        cell.pid = pid
+
         this.tree.insert(cell);
         this.counters[cell.type].add(id);
     }
