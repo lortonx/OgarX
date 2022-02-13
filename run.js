@@ -13,6 +13,16 @@ const DefaultProcesses = [
     //         OGARX_ENDPOINT: "mega",
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
+    // }, 
+    // {
+    //     name: "Solotrick",
+    //     env: {
+    //         OGARX_MODE: "custom/solotrick-ffa",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "Megasplit",
+    //         OGARX_ENDPOINT: "solotrick",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
     // },
     // {
     //     name: "Instant",
@@ -24,18 +34,18 @@ const DefaultProcesses = [
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
     // },
-    {
-        name: "Ex-Geminia",
-        env: {
-            OGARX_MODE: "default/extreme-omega",
-            OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "extreme-omega",
-            OGARX_ENDPOINT: "selfeed",
-            OGARX_TOKEN: process.env.OGARX_TOKEN
-        }
-    },
     // {
-    //     name: "Geminia",
+    //     name: "Ex-Geminia",
+    //     env: {
+    //         OGARX_MODE: "default/extreme-omega",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "extreme-omega",
+    //         OGARX_ENDPOINT: "selfeed",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
+    // },
+    // {
+    //     name: "Selfeed",
     //     env: {
     //         OGARX_MODE: "custom/sf",
     //         OGARX_PORT: process.env.PORT,
@@ -44,16 +54,16 @@ const DefaultProcesses = [
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
     // },
-    // {
-    //     name: "Geminia",
-    //     env: {
-    //         OGARX_MODE: "default/mega",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "Megasplit",
-    //         OGARX_ENDPOINT: "geminia",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // }
+    {
+        name: "Antarctic",
+        env: {
+            OGARX_MODE: "custom/selfeed",
+            OGARX_PORT: process.env.PORT,
+            OGARX_SERVER: "Antarctic",
+            OGARX_ENDPOINT: "selfeed",
+            OGARX_TOKEN: process.env.OGARX_TOKEN
+        }
+    }
 ];
 
 /** @type {pm2.StartOptions[]} */
