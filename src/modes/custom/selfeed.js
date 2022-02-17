@@ -2,7 +2,7 @@
 module.exports = {
     // Like Arctida
     TIME_SCALE: 1,//1.2, // magic that make everything work like a certain ball game
-    PLAYER_MAX_CELLS: 64,
+    PLAYER_MAX_CELLS: 512,
     PLAYER_MERGE_NEW_VER: true,
     PLAYER_AUTOSPLIT_SIZE: 2000,
     PLAYER_MERGE_TIME: 0,
