@@ -34,16 +34,16 @@ const DefaultProcesses = [
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
     // },
-    // {
-    //     name: "Ex-Geminia",
-    //     env: {
-    //         OGARX_MODE: "default/extreme-omega",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "extreme-omega",
-    //         OGARX_ENDPOINT: "selfeed",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // },
+    {
+        name: "Ex-Geminia",
+        env: {
+            OGARX_MODE: "default/extreme-omega",
+            OGARX_PORT: process.env.PORT,
+            OGARX_SERVER: "extreme-omega",
+            OGARX_ENDPOINT: "selfeed",
+            OGARX_TOKEN: process.env.OGARX_TOKEN
+        }
+    },
     // {
     //     name: "Selfeed",
     //     env: {
@@ -54,16 +54,16 @@ const DefaultProcesses = [
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
     // },
-    {
-        name: "Antarctic",
-        env: {
-            OGARX_MODE: "custom/selfeed",
-            OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "Antarctic",
-            OGARX_ENDPOINT: "selfeed",
-            OGARX_TOKEN: process.env.OGARX_TOKEN
-        }
-    }
+    // {
+    //     name: "Antarctic",
+    //     env: {
+    //         OGARX_MODE: "custom/selfeed",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "Antarctic",
+    //         OGARX_ENDPOINT: "selfeed",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
+    // }
 ];
 
 /** @type {pm2.StartOptions[]} */
