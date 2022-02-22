@@ -11,7 +11,7 @@ module.exports = {
 
     PLAYER_SPEED: 0.8,
 
-    PHYSICS_TPS: 20,
+    PHYSICS_TPS: 25,
     MAX_CELL_PER_TICK: 50,
 
     VIRUS_COUNT: 40,
