@@ -6,10 +6,10 @@ module.exports = {
     PLAYER_MERGE_NEW_VER: true,
     PLAYER_AUTOSPLIT_SIZE: 2000,
     PLAYER_MERGE_TIME: 0,
-    PLAYER_NO_MERGE_DELAY: 900,//900
+    PLAYER_NO_MERGE_DELAY: 800,//900
     PLAYER_NO_EJECT_DELAY:0,
 
-    PLAYER_SPEED: 0.8,
+    PLAYER_SPEED: 0.9,
 
     PHYSICS_TPS: 25,
     MAX_CELL_PER_TICK: 50,
@@ -20,7 +20,7 @@ module.exports = {
     VIRUS_SPLIT_BOOST: 1220,
     VIRUS_MONOTONE_POP: false,
     VIRUS_FEED_TIMES: 6,
-    VIRUS_MAX_BOOST: 5000, // разлетание частиц при попе
+    VIRUS_MAX_BOOST: 5500, // разлетание частиц при попе
 
     EJECT_SIZE: 38,//85,
     EJECT_LOSS: 33,//81
@@ -33,7 +33,6 @@ module.exports = {
     // PLAYER_VIEW_SCALE: 1.2,
     PLAYER_SPAWN_SIZE: 550,
     PLAYER_SPAWN_DELAY: 10,
-    PLAYER_SPLIT_DIST: 80,
     PLAYER_NO_COLLI_DELAY: 650,// пружинит при сплите
     PLAYER_MIN_SPLIT_SIZE: 120,//150,
     PLAYER_MIN_EJECT_SIZE: 64,//80,//90,
@@ -41,8 +40,10 @@ module.exports = {
     // PLAYER_MERGE_INCREASE: 100,
     PLAYER_VIEW_SCALE: 0.49,
     PLAYER_VIEW_MIN: 2000,
-    PLAYER_SPLIT_BOOST:800,
     EAT_OVERLAP: 3,
+    PLAYER_SPLIT_BOOST: 800,
+    PLAYER_SPLIT_DIST: 1,//80,
+    PLAYER_SPLIT_CAP: 4,
 
     DECAY_MIN: 200,
     STATIC_DECAY: 15,
