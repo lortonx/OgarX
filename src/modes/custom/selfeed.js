@@ -1,6 +1,13 @@
 /** @type {typeof import("../../physics/engine").DefaultSettings} */
 module.exports = {
     // Like Arctida
+    SOCKET_RECONNECT:2,
+    PHYSICS_TPS: 25,
+    MAX_CELL_PER_TICK: 50,
+    MAP_HW: 10071,
+    MAP_HH: 10071,
+
+
     TIME_SCALE: 1,//1.2, // magic that make everything work like a certain ball game
     PLAYER_MAX_CELLS: 64,
     PLAYER_MERGE_NEW_VER: true,
@@ -11,18 +18,15 @@ module.exports = {
 
     PLAYER_SPEED: 0.9,
 
-    PHYSICS_TPS: 25,
-    MAX_CELL_PER_TICK: 50,
-
     VIRUS_COUNT: 40,
     VIRUS_SIZE: 100,
     VIRUS_PUSH: false,
-    VIRUS_SPLIT_BOOST: 1220,
+    VIRUS_SPLIT_BOOST: 820,
     VIRUS_MONOTONE_POP: false,
     VIRUS_FEED_TIMES: 6,
     VIRUS_MAX_BOOST: 5500, // разлетание частиц при попе
 
-    EJECT_SIZE: 45,//38,//85,
+    EJECT_SIZE: 38,//85,
     EJECT_LOSS: 33,//81
     EJECT_DELAY: 135,
     EJECT_DISPERSION: 0.25,
@@ -39,24 +43,23 @@ module.exports = {
     PLAYER_NO_EJECT_POP_DEALY: 100,
     // PLAYER_MERGE_INCREASE: 100,
     PLAYER_VIEW_SCALE: 0.49,
-    PLAYER_VIEW_MIN: 2000,
+    PLAYER_VIEW_MIN: 4000,
     EAT_OVERLAP: 3,
-    PLAYER_SPLIT_BOOST: 800,
-    PLAYER_SPLIT_DIST: 1,//80,
-    PLAYER_SPLIT_CAP: 4,
+    PLAYER_SPLIT_BOOST: 780,
+    PLAYER_SPLIT_DIST: 40,//80,
+    PLAYER_SPLIT_CAP: 255,//4, // количество попыток спавна
 
     DECAY_MIN: 200,
     STATIC_DECAY: 15,
     DYNAMIC_DECAY: 0.3,
     DUAL_ENABLED: false,
     PLAYER_AUTOSPLIT_DELAY: 5,
-    PLAYER_VIEW_SCALE: 0.8,
-    MAP_HW: 10071,
-    MAP_HH: 10071,
+    // PLAYER_VIEW_SCALE: 0.8,
+
     NORMALIZE_THRESH_MASS: 100000000,//100000
     PLAYER_SAFE_SPAWN_RADIUS: 1.2,
 
-    SOCKET_RECONNECT:2,
+
     PLAYER_SPAWN_DELAY: 100,
     EJECT_MAX_AGE: 40000,
 };
