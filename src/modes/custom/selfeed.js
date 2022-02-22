@@ -2,10 +2,10 @@
 module.exports = {
     // Like Arctida
     SOCKET_RECONNECT:2,
-    PHYSICS_TPS: 25,
+    PHYSICS_TPS: 20,
     MAX_CELL_PER_TICK: 50,
-    MAP_HW: 10071,
-    MAP_HH: 10071,
+    MAP_HW: 10771,
+    MAP_HH: 10771,
 
 
     TIME_SCALE: 1,//1.2, // magic that make everything work like a certain ball game
@@ -13,12 +13,12 @@ module.exports = {
     PLAYER_MERGE_NEW_VER: true,
     PLAYER_AUTOSPLIT_SIZE: 2000,
     PLAYER_MERGE_TIME: 0,
-    PLAYER_NO_MERGE_DELAY: 800,//900
+    PLAYER_NO_MERGE_DELAY: 750,//900
     PLAYER_NO_EJECT_DELAY:0,
 
     PLAYER_SPEED: 0.9,
 
-    VIRUS_COUNT: 40,
+    VIRUS_COUNT: 60,
     VIRUS_SIZE: 100,
     VIRUS_PUSH: false,
     VIRUS_SPLIT_BOOST: 820,
@@ -37,7 +37,7 @@ module.exports = {
     // PLAYER_VIEW_SCALE: 1.2,
     PLAYER_SPAWN_SIZE: 550,
     PLAYER_SPAWN_DELAY: 10,
-    PLAYER_NO_COLLI_DELAY: 600,// 650 пружинит при сплите
+    PLAYER_NO_COLLI_DELAY: 510,// 650 пружинит при сплите
     PLAYER_MIN_SPLIT_SIZE: 120,//150,
     PLAYER_MIN_EJECT_SIZE: 64,//80,//90,
     PLAYER_NO_EJECT_POP_DEALY: 100,
@@ -56,7 +56,7 @@ module.exports = {
     PLAYER_AUTOSPLIT_DELAY: 5,
     // PLAYER_VIEW_SCALE: 0.8,
 
-    NORMALIZE_THRESH_MASS: 100000000,//100000
+    NORMALIZE_THRESH_MASS: 100000,//100000
     PLAYER_SAFE_SPAWN_RADIUS: 1.2,
 
 
