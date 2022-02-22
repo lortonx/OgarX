@@ -37,7 +37,7 @@ module.exports = {
     // PLAYER_VIEW_SCALE: 1.2,
     PLAYER_SPAWN_SIZE: 550,
     PLAYER_SPAWN_DELAY: 10,
-    PLAYER_NO_COLLI_DELAY: 650,// пружинит при сплите
+    PLAYER_NO_COLLI_DELAY: 600,// 650 пружинит при сплите
     PLAYER_MIN_SPLIT_SIZE: 120,//150,
     PLAYER_MIN_EJECT_SIZE: 64,//80,//90,
     PLAYER_NO_EJECT_POP_DEALY: 100,
