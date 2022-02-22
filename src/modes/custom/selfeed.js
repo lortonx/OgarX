@@ -22,7 +22,7 @@ module.exports = {
     VIRUS_FEED_TIMES: 6,
     VIRUS_MAX_BOOST: 5500, // разлетание частиц при попе
 
-    EJECT_SIZE: 38,//85,
+    EJECT_SIZE: 45,//38,//85,
     EJECT_LOSS: 33,//81
     EJECT_DELAY: 135,
     EJECT_DISPERSION: 0.25,
