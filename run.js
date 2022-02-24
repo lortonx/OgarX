@@ -44,26 +44,26 @@ const DefaultProcesses = [
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
     // },
-    // {
-    //     name: "Selfeed",
-    //     env: {
-    //         OGARX_MODE: "custom/sf",
-    //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "Selfeed",
-    //         OGARX_ENDPOINT: "selfeed",
-    //         OGARX_TOKEN: process.env.OGARX_TOKEN
-    //     }
-    // },
     {
-        name: "Antarctic",
+        name: "Selfeed",
         env: {
-            OGARX_MODE: "custom/selfeed",
+            OGARX_MODE: "custom/sf",
             OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "Antarctic",
+            OGARX_SERVER: "Selfeed",
             OGARX_ENDPOINT: "selfeed",
             OGARX_TOKEN: process.env.OGARX_TOKEN
         }
-    }
+    },
+    // {
+    //     name: "Antarctic",
+    //     env: {
+    //         OGARX_MODE: "custom/selfeed",
+    //         OGARX_PORT: process.env.PORT,
+    //         OGARX_SERVER: "Antarctic",
+    //         OGARX_ENDPOINT: "selfeed",
+    //         OGARX_TOKEN: process.env.OGARX_TOKEN
+    //     }
+    // }
 ];
 
 /** @type {pm2.StartOptions[]} */
