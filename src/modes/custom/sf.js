@@ -1,7 +1,7 @@
 /** @type {typeof import("../../physics/engine").DefaultSettings} */
 module.exports = {
     TIME_SCALE: 1.2, // magic that make everything work like a certain ball game
-    PLAYER_MAX_CELLS: 512,
+    PLAYER_MAX_CELLS: 256,
     PLAYER_MERGE_NEW_VER: true,
     PLAYER_AUTOSPLIT_SIZE: 0,
     PLAYER_MERGE_TIME: 0,
@@ -16,11 +16,11 @@ module.exports = {
     VIRUS_FEED_TIMES: 7,
 
     EJECT_SIZE: 75,//75,// 68,//85,
-    EJECT_LOSS: 50,//70,// 64,//80,
+    EJECT_LOSS: 70,// 64,//80,
     EJECT_DELAY: 80,// 80,//100,
-    BOTS: 140,
+    BOTS: 40,
     BOT_SPAWN_SIZE: 1000,
-    PELLET_COUNT: 3000,
+    PELLET_COUNT: 2000,
     PELLET_SIZE: 15,
     PLAYER_VIEW_SCALE: 1.2,
     PLAYER_SPAWN_SIZE: 2000,
@@ -28,9 +28,9 @@ module.exports = {
     PLAYER_SPLIT_DIST: 80,
     PLAYER_MIN_SPLIT_SIZE: 150,
     PLAYER_MIN_EJECT_SIZE: 100,
-    MAP_HW: 48000,
-    MAP_HH: 48000,
-    NORMALIZE_THRESH_MASS: 100000,
+    MAP_HW: 26000,
+    MAP_HH: 26000,
+    NORMALIZE_THRESH_MASS: 10000,
     PLAYER_SAFE_SPAWN_RADIUS: 1.2,
 
     SOCKET_RECONNECT:2,
