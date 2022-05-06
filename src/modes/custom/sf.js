@@ -2,7 +2,7 @@
 module.exports = {
     TIME_SCALE: 1.2, // magic that make everything work like a certain ball game
     PLAYER_MAX_CELLS: 256,
-    PLAYER_MERGE_NEW_VER: true,
+    PLAYER_MERGE_NEW_VER: false,
     PLAYER_AUTOSPLIT_SIZE: 0,
     PLAYER_MERGE_TIME: 0,
     PLAYER_NO_MERGE_DELAY: 900,
@@ -18,7 +18,7 @@ module.exports = {
     EJECT_SIZE: 75,//75,// 68,//85,
     EJECT_LOSS: 70,// 64,//80,
     EJECT_DELAY: 80,// 80,//100,
-    BOTS: 40,
+    BOTS: 50,
     BOT_SPAWN_SIZE: 1000,
     PELLET_COUNT: 2000,
     PELLET_SIZE: 15,
@@ -30,7 +30,7 @@ module.exports = {
     PLAYER_MIN_EJECT_SIZE: 100,
     MAP_HW: 26000,
     MAP_HH: 26000,
-    NORMALIZE_THRESH_MASS: 10000,
+    NORMALIZE_THRESH_MASS: 100000,
     PLAYER_SAFE_SPAWN_RADIUS: 1.2,
 
     SOCKET_RECONNECT:2,
