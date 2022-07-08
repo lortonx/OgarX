@@ -18,7 +18,7 @@ module.exports = {
     EJECT_SIZE: 75,//75,// 68,//85,
     EJECT_LOSS: 70,// 64,//80,
     EJECT_DELAY: 80,// 80,//100,
-    BOTS: 25,
+    BOTS: 100,
     BOT_SPAWN_SIZE: 1000,
     PELLET_COUNT: 2000,
     PELLET_SIZE: 15,
