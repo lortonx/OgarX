@@ -36,4 +36,6 @@ module.exports = {
     SOCKET_RECONNECT:2,
     PLAYER_SPAWN_DELAY: 100,
     EJECT_MAX_AGE: 40000,
+
+    DUAL_ENABLED: true,
 };

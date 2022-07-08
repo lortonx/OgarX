@@ -97,7 +97,9 @@ const DefaultSettings = {
     CHAT_ENABLED: true,
     CHAT_HISTORY: 25,
     FORCE_UTF8: false, // No funky unicode clowning,
-    IGNORE_LOG: false
+    IGNORE_LOG: false,
+
+    STRICT_BORDER: false,
 }
 
 const DEAD_CELL_TYPE = 251;
@@ -385,7 +387,8 @@ module.exports = class Engine {
                     if (d < 1) dx = 1, dy = 0, d = 1;
                     else dx /= d, dy /= d;
                     const MULTI_2 = SPLIT_R_THRESH ? Math.max(r / SPLIT_R_THRESH, 1) : 1;
-                    this.splitFromCell(cell, cell.r * Math.SQRT1_2, dx, dy, MULTI_2 * boost);
+                    this.splitFromCell(cell, cell.r * Math.SQRT1_2, 
+                        dx, dy, MULTI_2 * boost);
                 }
                 controller.splitAttempts--;
             }
@@ -416,16 +419,17 @@ module.exports = class Engine {
                         if (r < MIN_EJECT_SIZE) continue;
                         if (cell.age < this.options.PLAYER_NO_EJECT_DELAY) continue;
                         
-                        const x = cell.x, y = cell.y;
+                        const x = cell.x, 
+                              y = cell.y;
                         let dx = controller.mouseX - x;
                         let dy = controller.mouseY - y;
-                        let d = Math.sqrt(dx * dx + dy * dy);
+                        let d = Math.sqrt(dx * dx + dy * dy); // distance cell to mouse
                         if (d < 1) dx = 1, dy = 0, d = 1;
                         else dx /= d, dy /= d;
-                        const sx = x + dx * r;
-                        const sy = y + dy * r;
+                        const sx = x + dx * (r- 2300/this.options.PHYSICS_TPS);
+                        const sy = y + dy * (r- 2300/this.options.PHYSICS_TPS);
                         const a = Math.atan2(dx, dy) - this.options.EJECT_DISPERSION + 
-                            Math.random() * 2 * this.options.EJECT_DISPERSION;
+                            Math.random() * 2 * this.options.EJECT_DISPERSION; // angle
                         
                         this.newCell(sx, sy, EJECT_SIZE, EJECTED_TYPE, 
                             Math.sin(a), Math.cos(a), EJECT_BOOST);
@@ -467,6 +471,7 @@ module.exports = class Engine {
             this.options.DECAY_MIN,
             this.options.STATIC_DECAY,
             this.options.DYNAMIC_DECAY,
+            this.options.STRICT_BORDER,
             -this.options.MAP_HW, this.options.MAP_HW,
             -this.options.MAP_HH, this.options.MAP_HH);
     }
@@ -479,15 +484,22 @@ module.exports = class Engine {
             const c = this.game.controls[~~id];
             if (!c.handle) continue;
             const s = this.counters[~~id].size;
-            const norm = this.options.NORMALIZE_THRESH_MASS ?
-                Math.min(Math.sqrt(this.options.NORMALIZE_THRESH_MASS / c.score), 1) : 1;
+            // const norm = this.options.NORMALIZE_THRESH_MASS ?
+            //     Math.min(Math.sqrt(this.options.NORMALIZE_THRESH_MASS / c.score), 1) : 1;
+            const norm = 1;
 
             s && this.wasm.update_player_cells(0, ptr, s,
                 c.mouseX, c.mouseY, 
                 c.lockDir, c.linearEquation[0], c.linearEquation[1], c.linearEquation[2],
                 dt,
-                initial, this.options.PLAYER_MERGE_INCREASE, this.options.PLAYER_SPEED, norm,
-                this.options.PLAYER_MERGE_TIME, this.options.PLAYER_NO_MERGE_DELAY, this.options.PLAYER_MERGE_NEW_VER);
+                initial, 
+                this.options.PLAYER_MERGE_INCREASE, 
+                this.options.PLAYER_SPEED, 
+                norm,
+                this.options.PLAYER_MERGE_TIME, 
+                this.options.PLAYER_NO_MERGE_DELAY, 
+                this.options.PLAYER_MERGE_NEW_VER
+                );
             ptr += s << 1;
         }
     }
@@ -590,11 +602,16 @@ module.exports = class Engine {
         // Magic goes here
         this.collisions = this.wasm.resolve(0,
             this.indicesPtr, this.counters[PELLET_TYPE].size,
-            this.treePtr, this.stackPtr,
-            o.PLAYER_NO_MERGE_DELAY, o.PLAYER_NO_COLLI_DELAY,
-            o.EAT_OVERLAP, o.EAT_MULT, 
+            this.treePtr, 
+            this.stackPtr,
+            o.PLAYER_NO_MERGE_DELAY, 
+            o.PLAYER_NO_COLLI_DELAY,
+            o.EAT_OVERLAP, 
+            o.EAT_MULT, 
             o.VIRUS_PUSH ? o.VIRUS_PUSH_BOOST : 0, o.VIRUS_MAX_BOOST,
-            o.VIRUS_SIZE, VIRUS_MAX_SIZE, o.PLAYER_DEAD_DELAY);
+            o.VIRUS_SIZE, 
+            VIRUS_MAX_SIZE, 
+            o.PLAYER_DEAD_DELAY);
     }
 
     /**
@@ -666,14 +683,19 @@ module.exports = class Engine {
      * @param {number} mass
      * @returns {number[]}
      */
-    distributeCellMass(type, mass) {
+    distributeCellMass(type, mass) {// масса с учетом съеденой колючки
         let cellsLeft = this.options.PLAYER_MAX_CELLS - this.counters[type].size;
         if (cellsLeft <= 0) return [];
         let splitMin = this.options.PLAYER_MIN_SPLIT_SIZE;
         splitMin = splitMin * splitMin / 100;
         const cellMass = mass;
         if (this.options.VIRUS_MONOTONE_POP) {
-            const amount = Math.min(Math.floor(cellMass / splitMin), cellsLeft);
+            const amount = Math.max(Math.floor(cellMass / splitMin), cellsLeft); // orig min
+            const perPiece = cellMass / (amount + 1);
+            return new Array(amount).fill(perPiece);
+        } else if(mass >= 242 && mass <= 319) {
+            console.log(mass);
+            const amount = Math.max(Math.floor(cellMass / splitMin), cellsLeft); // orig min
             const perPiece = cellMass / (amount + 1);
             return new Array(amount).fill(perPiece);
         }

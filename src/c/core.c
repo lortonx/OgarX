@@ -108,7 +108,8 @@ unsigned short kill_cell(Cell cells[], unsigned short id, unsigned short next_id
 
 void update(Cell cells[], unsigned short* ptr, float dt,
     unsigned int eject_max_age,
-    float auto_size, float decay_min, float static_decay, float dynamic_decay,
+    float auto_size, float decay_min, float static_decay, float dynamic_decay, 
+    unsigned char strict_border,
     float l, float r, float b, float t) {
 
     static_decay *= 0.01f;
@@ -168,22 +169,27 @@ void update(Cell cells[], unsigned short* ptr, float dt,
 
         // Bounce and clamp the cells in the box
         unsigned char bounce = cell->boost > 1;
-        float cr = cell->r;
-        if (cell->x < l + cr) {
-            cell->x = l + cr;
+        float cell_radius;
+        if (strict_border == 1){
+            cell_radius = cell->r;
+        }else{
+            cell_radius = cell->r / 2.f;
+        }
+        if (cell->x < l + cell_radius) {
+            cell->x = l + cell_radius;
             cell->flags |= UPDATE_BIT;
             if (bounce) cell->boostX = -cell->boostX;
-        } else if (cell->x > r - cr) {
-            cell->x = r - cr;
+        } else if (cell->x > r - cell_radius) {
+            cell->x = r - cell_radius;
             cell->flags |= UPDATE_BIT;
             if (bounce) cell->boostX = -cell->boostX;
         }
-        if (cell->y > t - cr) {
-            cell->y = t - cr;
+        if (cell->y > t - cell_radius) {
+            cell->y = t - cell_radius;
             cell->flags |= UPDATE_BIT;
             if (bounce) cell->boostY = -cell->boostY;
-        } else if (cell->y < b + cr) {
-            cell->y = b + cr;
+        } else if (cell->y < b + cell_radius) {
+            cell->y = b + cell_radius;
             cell->flags |= UPDATE_BIT;
             if (bounce) cell->boostY = -cell->boostY;
         }
@@ -196,8 +202,13 @@ void update_player_cells(Cell cells[], unsigned short* indices, unsigned int n,
     float mouse_x, float mouse_y, 
     unsigned char lock_dir, float a, float b, float c, 
     float dt,
-    float merge_initial, float merge_increase, float player_speed, float normalizer,
-    float merge_time,    float no_merge_delay, unsigned char merge_version_new) {
+    float merge_initial, 
+    float merge_increase, 
+    float player_speed, 
+    float normalizer,
+    float merge_time,    
+    float no_merge_delay, 
+    unsigned char merge_version_new) {
     
     if (!n) return;
 
@@ -206,8 +217,9 @@ void update_player_cells(Cell cells[], unsigned short* indices, unsigned int n,
             for (unsigned int i = 0; i < n; i++) {
                 Cell* cell = &cells[indices[i]];
                 float increase = 25.f * cell->r * merge_increase;
-                float time = increase > merge_initial ? increase : merge_initial;
-                if (cell->age > normalizer * time) cell->flags |= MERGE_BIT;
+                float time = increase > merge_initial ? increase : merge_initial; // max
+                // time = time > merge_time * 1000.f ? merge_time * 1000.f : time; // max
+                if (cell->age > normalizer * time) cell->flags |= MERGE_BIT;// else cell->flags &= ~MERGE_BIT;
             }
         } else {
             for (unsigned int i = 0; i < n; i++) {
@@ -222,7 +234,7 @@ void update_player_cells(Cell cells[], unsigned short* indices, unsigned int n,
             Cell* cell = &cells[indices[i]];
             if (cell->age > no_merge_delay) cell->flags |= MERGE_BIT;
         }
-    }
+    } 
 
     // Move player cells
     if (lock_dir) {
@@ -422,8 +434,8 @@ unsigned int resolve(Cell cells[],
         QuadNode* curr;
 
         unsigned char colli = cell->age > no_colli_delay;
-        float x = cell->x;
-        float y = cell->y;
+        float curr_x = cell->x;
+        float curr_y = cell->y;
         float r1 = cell->r;
         float a = r1 * r1;
 
@@ -472,9 +484,9 @@ unsigned int resolve(Cell cells[],
                 // Check player x player
                 if (IS_PLAYER(type)) {
                     if (type == other->type) { // same player
-                        if (flags & other_flags & MERGE_BIT) // Both merge bits are set
+                        if (flags & other_flags & MERGE_BIT) {// Both merge bits are set
                             action = PHYSICS_EAT; // player merge
-                        else if (colli && other->age > no_colli_delay) action = PHYSICS_COL; // player collide
+                        } else if (colli && other->age > no_colli_delay) action = PHYSICS_COL; // player collide
                     } else action = PHYSICS_EAT; // player eats everything else
                 } else if (IS_VIRUS(type) && IS_EJECTED(other->type)) {
                     // Virus can only eat ejected cell
@@ -493,12 +505,12 @@ unsigned int resolve(Cell cells[],
 
                 if (action == PHYSICS_NON) continue;
 
-                float dx = other->x - x;
-                float dy = other->y - y;
+                float dx = other->x - curr_x;
+                float dy = other->y - curr_y;
                 float r2 = other->r;
 
-                float r_sum = r1 + r2;
-                float d_sqr = dx * dx + dy * dy;
+                float r_sum = r1 + r2; // sum radius
+                float d_sqr = dx * dx + dy * dy; // sqrt
                 
                 // Does not overlap
                 if (d_sqr >= r_sum * r_sum) continue;
@@ -528,8 +540,8 @@ unsigned int resolve(Cell cells[],
                     float bM = a / sum;
 
                     float m1 = (m < r1 ? m : r1) * aM;
-                    x -= dx * m1; // * 0.8f;
-                    y -= dy * m1; // * 0.8f;
+                    curr_x -= dx * m1; // * 0.8f;
+                    curr_y -= dy * m1; // * 0.8f;
 
                     float m2 = (m < r2 ? m : r2) * bM;
                     other->x += dx * m2; // * 0.8f;
@@ -592,8 +604,8 @@ unsigned int resolve(Cell cells[],
         }
 
         cell->r = r1;
-        cell->x = x;
-        cell->y = y;
+        cell->x = curr_x;
+        cell->y = curr_y;
     }
     
     unsigned char lock_type = 0;

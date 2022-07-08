@@ -1,4 +1,6 @@
 # <strong> OgarX </strong>
+ * Исправить баг при котором перестает работать фуд спустя время
+# <strong> OgarX </strong>
 
 This project is an _optimized_ rewrite of the Ogar series project, especially based on [OgarII](https://github.com/Luka967/OgarII)'s structure. A lot of features from the original project are not implemented (while I focused on other features that serve my interests the best).
 

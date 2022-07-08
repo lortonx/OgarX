@@ -150,9 +150,11 @@ unsigned char* serialize(
         float y_max = t - radius;
 
         float x = get_cell_x(0, cell_id);
-        writeInt16(CLAMP(x, x_min, x_max));
+        writeInt16(x);
+        // writeInt16(CLAMP(x, x_min, x_max));
         float y = get_cell_y(0, cell_id);
-        writeInt16(CLAMP(y, y_min, y_max));
+        writeInt16(y);
+        // writeInt16(CLAMP(y, y_min, y_max));
         writeUint16(radius);
 
         A_ptr += 4;
@@ -172,9 +174,11 @@ unsigned char* serialize(
         float y_max = t - radius;
 
         float x = get_cell_x(0, cell_id);
-        writeInt16(CLAMP(x, x_min, x_max));
+        writeInt16(x);
+        // writeInt16(CLAMP(x, x_min, x_max));
         float y = get_cell_y(0, cell_id);
-        writeInt16(CLAMP(y, y_min, y_max));
+        writeInt16(y);
+        // writeInt16(CLAMP(y, y_min, y_max));
         writeUint16(radius);
 
         U_ptr += 4;

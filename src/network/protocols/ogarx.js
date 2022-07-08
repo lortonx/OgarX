@@ -101,6 +101,7 @@ module.exports = class OgarXProtocol extends Protocol {
             } else {
                 // ??
             }
+            console.log('dual enabled')
         }
 
         if (this.dual) {

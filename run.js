@@ -44,26 +44,26 @@ const DefaultProcesses = [
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
     // },
-    {
-        name: "Selfeed",
-        env: {
-            OGARX_MODE: "custom/sf",
-            OGARX_PORT: process.env.PORT,
-            OGARX_SERVER: "Selfeed",
-            OGARX_ENDPOINT: "selfeed",
-            OGARX_TOKEN: process.env.OGARX_TOKEN
-        }
-    },
     // {
-    //     name: "Antarctic",
+    //     name: "Selfeed",
     //     env: {
-    //         OGARX_MODE: "custom/selfeed",
+    //         OGARX_MODE: "custom/sf",
     //         OGARX_PORT: process.env.PORT,
-    //         OGARX_SERVER: "Antarctic",
+    //         OGARX_SERVER: "Selfeed",
     //         OGARX_ENDPOINT: "selfeed",
     //         OGARX_TOKEN: process.env.OGARX_TOKEN
     //     }
-    // }
+    // },
+    {
+        name: "Antarctic",
+        env: {
+            OGARX_MODE: "custom/selfeed",
+            OGARX_PORT: process.env.PORT,
+            OGARX_SERVER: "Antarctic",
+            OGARX_ENDPOINT: "selfeed",
+            OGARX_TOKEN: process.env.OGARX_TOKEN
+        }
+    }
 ];
 
 /** @type {pm2.StartOptions[]} */
@@ -88,7 +88,8 @@ for (const proc of config) {
     proc.script = "./src/index.js";
     proc.max_memory_restart = "300M";
     proc.kill_timeout = 7000;
-
+    proc.watch = ["src", "public"];
+    proc.ignore_watch = ["src/c"]
     if (validateMode(proc.env.OGARX_MODE)) {
         procToStart.push(proc);
     } else {
@@ -96,16 +97,27 @@ for (const proc of config) {
     }
 }
 
-pm2.connect(err => {
+pm2.connect(async err => {
     if (err) return console.error("Failed to connect to pm2", err);
+    // await new Promise(resolve => {
+    //     pm2.start({
+    //         name: "Builder",
+    //         cwd: __dirname,
+    //         script: "npm",
+    //         // arhs: "run build-core",
+    //         watch: ["src/c"],
+    //         wait_ready: true,
+    //     }, resolve)
+    // });
+
     pm2.start({
         name: "Gateway",
         cwd: __dirname,
         script: "./src/gateway.js",
         wait_ready: true,
-        env: { GATEWAY_PORT:3001, GATEWAY_ORIGIN }
-    }, e => {
-        if (e) console.error(e);
+        env: { GATEWAY_PORT:3001, GATEWAY_ORIGIN },
+    }, gatewae => {
+        if (gatewae) console.error(gatewae);
         else console.log("Gateway Process started");
 
         Promise.all(procToStart.map(proc => new Promise(res => {        
