@@ -426,8 +426,8 @@ module.exports = class Engine {
                         let d = Math.sqrt(dx * dx + dy * dy); // distance cell to mouse
                         if (d < 1) dx = 1, dy = 0, d = 1;
                         else dx /= d, dy /= d;
-                        const sx = x + dx * (r- 2300/this.options.PHYSICS_TPS);
-                        const sy = y + dy * (r- 2300/this.options.PHYSICS_TPS);
+                        const sx = x + dx * r;//(r- 2300/this.options.PHYSICS_TPS);
+                        const sy = y + dy * r;//(r- 2300/this.options.PHYSICS_TPS);
                         const a = Math.atan2(dx, dy) - this.options.EJECT_DISPERSION + 
                             Math.random() * 2 * this.options.EJECT_DISPERSION; // angle
                         

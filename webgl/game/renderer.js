@@ -608,8 +608,12 @@ class Renderer {
         const hh = this.viewport.height * this.camera.scale / 2;
 
         const v = this.viewbox;
-        mat4.ortho(this.proj, v.l = x - hw, v.r = x + hw, 
-            v.b = y - hh, v.t = y + hh, 0, 1);
+        mat4.ortho(this.proj, 
+            v.l = x - hw, 
+            v.r = x + hw, 
+            v.b = y - hh, 
+            v.t = y + hh, 
+            0, 1);
     }
 
     checkResolution() {
