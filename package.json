@@ -9,7 +9,7 @@
     "build-core": "emcc -O3 -s SIDE_MODULE=1 -mbulk-memory ./src/c/core.c -o ./public/static/wasm/server.wasm",
     "build-ogarx": "emcc -O2 -s SIDE_MODULE=1 -mbulk-memory ./src/c/ogarx.c -o ./public/static/wasm/ogarx.wasm",
     "start": "node run.js",
-    "dev": "nodemon run.js"
+    "dev": "nodemon --inspect=9231 run.js"
   },
   "repository": {
     "type": "git",
