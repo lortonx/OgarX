@@ -1,2 +1,2 @@
 web: npm install
-web: npm run heroku
+web: npm run start
