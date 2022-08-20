@@ -9,8 +9,9 @@
     "build-core": "emcc -O3 -s SIDE_MODULE=1 -mbulk-memory ./src/c/core.c -o ./public/static/wasm/server.wasm",
     "build-ogarx": "emcc -O2 -s SIDE_MODULE=1 -mbulk-memory ./src/c/ogarx.c -o ./public/static/wasm/ogarx.wasm",
     "start": "node run.js",
-    "heroku": "node --inspect=9231 run.js",
-    "dev": "nodemon --inspect=9231 run.js"
+    "heroku": "set OGARX_MODE=custom/sf&& set OGARX_PORT=3000&& set OGARX_SERVER=Selfeed&& set OGARX_ENDPOINT=/&& nodemon --inspect=9239 --trace-warnings ./src/index.js",
+    "heroku2": "nodemon --inspect=9231 src/index.js",
+    "dev": "nodemon run.js"
   },
   "repository": {
     "type": "git",

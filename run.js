@@ -90,6 +90,9 @@ for (const proc of config) {
     proc.kill_timeout = 7000;
     proc.watch = ["src", "public"];
     proc.ignore_watch = ["src/c"]
+    proc.node_args = ["--inspect=9239"]
+    // output = "/dev/stdout"
+    // error = "/dev/stderr"
     if (validateMode(proc.env.OGARX_MODE)) {
         procToStart.push(proc);
     } else {
