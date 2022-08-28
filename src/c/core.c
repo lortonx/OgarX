@@ -391,7 +391,7 @@ extern float get_line_b(unsigned char id);
 extern float get_line_c(unsigned char id);
 
 extern void console_log(unsigned short id);
-
+// Данная функция может неадекватно долго выполнятся вне зависимости от агрументов
 unsigned int resolve(Cell cells[],
     unsigned short* ptr, unsigned short pellet_count,
     QuadNode* root, QuadNode** sp,

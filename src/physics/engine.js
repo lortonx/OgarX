@@ -600,10 +600,12 @@ module.exports = class Engine {
         const o = this.options;
 
         // Magic goes here
+        // Иногда данная функция долго длится
         this.collisions = this.wasm.resolve(0,
-            this.indicesPtr, this.counters[PELLET_TYPE].size,
-            this.treePtr, 
-            this.stackPtr,
+            this.indicesPtr, // 2097152
+            this.counters[PELLET_TYPE].size, // 1979
+            this.treePtr, // 2111926
+            this.stackPtr, // 2201532
             o.PLAYER_NO_MERGE_DELAY, 
             o.PLAYER_NO_COLLI_DELAY,
             o.EAT_OVERLAP, 
